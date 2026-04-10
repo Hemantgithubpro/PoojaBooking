@@ -32,7 +32,7 @@ function buildSlotGrid() {
     const button = document.createElement("button");
     button.type = "button";
     button.className =
-      "slot-btn rounded-xl border border-amber-300 px-3 py-3 text-sm font-semibold text-amber-900 bg-white hover:bg-amber-50 transition";
+      "slot-btn rounded-xl border border-orange-300 px-3 py-3 text-sm font-semibold text-orange-900 bg-white hover:bg-orange-50 transition";
     button.textContent = slot;
     button.dataset.slot = slot;
 
@@ -107,15 +107,15 @@ async function fetchBookedSlots() {
 function renderSuccess(result) {
   const pdfDataUri = `data:application/pdf;base64,${result.pdfBase64}`;
 
-  resultCard.className = "mt-8 p-5 bg-white border border-emerald-200 rounded-2xl";
+  resultCard.className = "mt-8 p-5 bg-white border border-orange-200 rounded-2xl";
   resultCard.innerHTML = `
-    <h3 class="text-2xl font-bold text-emerald-800">Thank You! Booking Confirmed.</h3>
-    <p class="mt-2 text-emerald-900/80">Booking ID: <strong>${result.bookingId}</strong></p>
-    <p class="mt-1 text-emerald-900/80">A confirmation email has been sent to your email inbox.</p>
+    <h3 class="text-2xl font-bold text-orange-800">Thank You! Booking Confirmed.</h3>
+    <p class="mt-2 text-orange-900/80">Booking ID: <strong>${result.bookingId}</strong></p>
+    <p class="mt-1 text-orange-900/80">A confirmation email has been sent to your email inbox.</p>
     <a
       href="${pdfDataUri}"
       download="${result.pdfFileName || "Temple-Booking-Confirmation.pdf"}"
-      class="inline-flex mt-4 px-5 py-2 rounded-lg bg-emerald-700 text-white font-semibold hover:bg-emerald-800 transition"
+      class="inline-flex mt-4 px-5 py-2 rounded-lg bg-orange-700 text-white font-semibold hover:bg-orange-800 transition"
     >
       Download Confirmation PDF
     </a>

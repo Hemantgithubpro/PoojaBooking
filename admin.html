@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Panel | Temple Seva</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Kalam:wght@400;700&family=Mukta:wght@300;400;500;700&display=swap"
+        rel="stylesheet" />
+    <style>
+        :root {
+            --saffron: #ff7a00;
+            --saffron-dark: #d65f00;
+            --white: #ffffff;
+            --ink: #332211;
+        }
+
+        body {
+            font-family: "Mukta", sans-serif;
+            color: var(--ink);
+            background:
+                radial-gradient(circle at 10% 20%, rgba(255, 122, 0, 0.2), transparent 45%),
+                radial-gradient(circle at 90% 10%, rgba(255, 122, 0, 0.14), transparent 40%),
+                linear-gradient(140deg, #ffffff 0%, #fff8f1 60%, #fff2e3 100%);
+            min-height: 100vh;
+        }
+
+        .script-font {
+            font-family: "Kalam", cursive;
+        }
+    </style>
+</head>
+
+<body class="py-8 px-4">
+    <main class="max-w-7xl mx-auto space-y-6">
+        <header class="text-center">
+            <p class="uppercase tracking-[0.2em] text-orange-700 text-sm font-semibold">Temple Seva</p>
+            <h1 class="script-font text-4xl md:text-5xl text-orange-900 mt-2">Admin Operations Panel</h1>
+            <p class="text-orange-900/80 mt-2">View, edit, and delete bookings from one place.</p>
+        </header>
+
+        <section class="bg-[var(--white)] border border-orange-200 rounded-3xl shadow-xl p-5 md:p-7 space-y-5">
+            <div class="grid md:grid-cols-5 gap-4">
+                <div class="md:col-span-2">
+                    <label for="adminKey" class="block text-sm font-semibold text-orange-900 mb-2">Admin Access
+                        Key</label>
+                    <input type="password" id="adminKey" placeholder="Enter admin key"
+                        class="w-full rounded-xl border border-orange-300 bg-white px-4 py-3 focus:outline-none focus:ring-2 focus:ring-orange-400" />
+                </div>
+
+                <div>
+                    <label for="filterPandit" class="block text-sm font-semibold text-orange-900 mb-2">Pandit</label>
+                    <select id="filterPandit"
+                        class="w-full rounded-xl border border-orange-300 bg-white px-4 py-3 focus:outline-none focus:ring-2 focus:ring-orange-400">
+                        <option value="">All</option>
+                        <option value="Pandit Ji A">Pandit Ji A</option>
+                        <option value="Pandit Ji B">Pandit Ji B</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label for="filterDate" class="block text-sm font-semibold text-orange-900 mb-2">Date</label>
+                    <input type="date" id="filterDate"
+                        class="w-full rounded-xl border border-orange-300 bg-white px-4 py-3 focus:outline-none focus:ring-2 focus:ring-orange-400" />
+                </div>
+
+                <div>
+                    <label for="filterBookingId" class="block text-sm font-semibold text-orange-900 mb-2">Booking
+                        ID</label>
+                    <input type="text" id="filterBookingId" placeholder="BK-2026..."
+                        class="w-full rounded-xl border border-orange-300 bg-white px-4 py-3 focus:outline-none focus:ring-2 focus:ring-orange-400" />
+                </div>
+            </div>
+
+            <div class="flex flex-wrap items-center gap-3">
+                <button id="loadBtn" type="button"
+                    class="px-5 py-2.5 rounded-full text-white font-semibold shadow-md hover:scale-[1.01] transition"
+                    style="background: linear-gradient(90deg, var(--saffron), var(--saffron-dark));">
+                    Load Bookings
+                </button>
+                <button id="exportCsvBtn" type="button"
+                    class="px-5 py-2.5 rounded-full text-orange-900 font-semibold border border-orange-300 bg-white hover:bg-orange-50 transition">
+                    Export CSV
+                </button>
+                <span id="statusText" class="text-sm text-orange-900/80">Enter admin key and click Load Bookings.</span>
+            </div>
+        </section>
+
+        <section class="bg-white/90 border border-orange-200 rounded-3xl shadow-xl overflow-hidden">
+            <div class="overflow-x-auto">
+                <table class="min-w-full text-sm">
+                    <thead class="bg-orange-100 text-orange-900">
+                        <tr>
+                            <th class="px-4 py-3 text-left">Booking ID</th>
+                            <th class="px-4 py-3 text-left">Timestamp</th>
+                            <th class="px-4 py-3 text-left">Pandit</th>
+                            <th class="px-4 py-3 text-left">Date</th>
+                            <th class="px-4 py-3 text-left">Slot</th>
+                            <th class="px-4 py-3 text-left">User</th>
+                            <th class="px-4 py-3 text-left">Mobile</th>
+                            <th class="px-4 py-3 text-left">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="bookingTableBody"></tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+
+    <script src="admin.js"></script>
+</body>
+
+</html>

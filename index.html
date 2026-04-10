@@ -13,9 +13,9 @@
         rel="stylesheet" />
     <style>
         :root {
-            --saffron: #ff9933;
-            --gold: #d4af37;
-            --cream: #fffdd0;
+            --saffron: #ff7a00;
+            --saffron-dark: #d65f00;
+            --white: #ffffff;
             --ink: #332211;
         }
 
@@ -23,9 +23,9 @@
             font-family: "Mukta", sans-serif;
             color: var(--ink);
             background:
-                radial-gradient(circle at 20% 20%, rgba(255, 153, 51, 0.18), transparent 45%),
-                radial-gradient(circle at 80% 10%, rgba(212, 175, 55, 0.15), transparent 40%),
-                linear-gradient(135deg, #fffdf2 0%, #fff6dc 45%, #ffefc7 100%);
+                radial-gradient(circle at 15% 18%, rgba(255, 122, 0, 0.2), transparent 45%),
+                radial-gradient(circle at 82% 10%, rgba(255, 122, 0, 0.14), transparent 40%),
+                linear-gradient(135deg, #ffffff 0%, #fff7ef 55%, #fff2e3 100%);
             min-height: 100vh;
         }
 
@@ -38,31 +38,36 @@
 <body>
     <main class="min-h-screen flex items-center justify-center px-4 py-10">
         <section
-            class="max-w-6xl w-full grid md:grid-cols-2 gap-8 items-center bg-white/70 backdrop-blur-sm border border-amber-200 rounded-3xl shadow-2xl overflow-hidden">
+            class="max-w-6xl w-full grid md:grid-cols-2 gap-8 items-center bg-white/85 backdrop-blur-sm border border-orange-200 rounded-3xl shadow-2xl overflow-hidden">
             <div class="p-8 md:p-12">
-                <p class="uppercase tracking-[0.2em] text-amber-800 font-semibold text-sm">Temple Seva Booking</p>
-                <h1 class="headline text-4xl md:text-6xl leading-tight text-amber-900 mt-4">
+                <p class="uppercase tracking-[0.2em] text-orange-700 font-semibold text-sm">Temple Seva Booking</p>
+                <h1 class="headline text-4xl md:text-6xl leading-tight text-orange-900 mt-4">
                     Welcome to Divine Pooja Scheduling
                 </h1>
-                <p class="mt-5 text-lg text-amber-950/80">
+                <p class="mt-5 text-lg text-orange-950/80">
                     Reserve your preferred Pandit Ji and time slot for sacred ceremonies with a smooth,
                     transparent, and respectful booking experience.
                 </p>
                 <a href="booking.html"
                     class="inline-flex items-center gap-2 mt-8 px-7 py-3 rounded-full font-semibold text-white shadow-lg hover:scale-[1.02] transition"
-                    style="background: linear-gradient(90deg, var(--saffron), var(--gold));">
+                    style="background: linear-gradient(90deg, var(--saffron), var(--saffron-dark));">
                     Start Booking
                     <span aria-hidden="true">&#8594;</span>
+                </a>
+                <a href="admin.html"
+                    class="inline-flex items-center gap-2 mt-4 px-6 py-2.5 rounded-full border border-orange-300 text-orange-900 font-semibold bg-white hover:bg-orange-50 transition">
+                    Open Admin Panel
                 </a>
             </div>
 
             <div class="relative h-[340px] md:h-full min-h-[420px]">
-                <img src="https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&fit=crop&w=1200&q=80"
-                    alt="Serene Hindu temple" class="absolute inset-0 w-full h-full object-cover" />
-                <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-black/10 to-transparent"></div>
-                <div class="absolute bottom-6 left-6 right-6 bg-white/80 rounded-2xl p-4 border border-amber-200">
-                    <p class="headline text-2xl text-amber-900">Shubh Muhurat, Shubh Arambh</p>
-                    <p class="text-amber-900/80">Book with devotion and receive instant confirmation.</p>
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/df/Ayodhya_Ram_Mandir_Inauguration_Day_Picture.jpg/1280px-Ayodhya_Ram_Mandir_Inauguration_Day_Picture.jpg"
+                    alt="Ram Mandir, Ayodhya" class="absolute inset-0 w-full h-full object-cover" />
+                <div class="absolute inset-0 bg-gradient-to-t from-orange-950/30 via-orange-900/10 to-transparent">
+                </div>
+                <div class="absolute bottom-6 left-6 right-6 bg-white/85 rounded-2xl p-4 border border-orange-200">
+                    <p class="headline text-2xl text-orange-900">Shubh Muhurat, Shubh Arambh</p>
+                    <p class="text-orange-900/80">Book with devotion and receive instant confirmation.</p>
                 </div>
             </div>
         </section>

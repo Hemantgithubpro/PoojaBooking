@@ -13,9 +13,9 @@
         rel="stylesheet" />
     <style>
         :root {
-            --saffron: #ff9933;
-            --gold: #d4af37;
-            --cream: #fffdd0;
+            --saffron: #ff7a00;
+            --saffron-dark: #d65f00;
+            --white: #ffffff;
             --ink: #332211;
         }
 
@@ -23,9 +23,9 @@
             font-family: "Mukta", sans-serif;
             color: var(--ink);
             background:
-                linear-gradient(120deg, rgba(255, 153, 51, 0.2), rgba(255, 253, 208, 0.8)),
-                radial-gradient(circle at 15% 85%, rgba(212, 175, 55, 0.25), transparent 45%),
-                #fffaf0;
+                linear-gradient(120deg, rgba(255, 122, 0, 0.18), rgba(255, 255, 255, 0.95)),
+                radial-gradient(circle at 15% 85%, rgba(255, 122, 0, 0.18), transparent 45%),
+                #ffffff;
         }
 
         .script-font {
@@ -38,9 +38,9 @@
         }
 
         .slot-btn.active {
-            border-color: #a16207;
-            background-color: #fef3c7;
-            box-shadow: 0 10px 20px -10px rgba(161, 98, 7, 0.6);
+            border-color: #c2410c;
+            background-color: #ffedd5;
+            box-shadow: 0 10px 20px -10px rgba(194, 65, 12, 0.55);
         }
     </style>
 </head>
@@ -48,19 +48,19 @@
 <body class="min-h-screen py-8 px-4">
     <main class="max-w-4xl mx-auto">
         <header class="text-center mb-8">
-            <p class="uppercase tracking-[0.2em] text-amber-700 text-sm font-semibold">Temple Seva</p>
-            <h1 class="script-font text-4xl md:text-5xl text-amber-900 mt-3">Pandit Ji Booking Card</h1>
-            <p class="text-amber-900/75 mt-2">Choose your Pandit Ji, date, and preferred 2-hour slot.</p>
+            <p class="uppercase tracking-[0.2em] text-orange-700 text-sm font-semibold">Temple Seva</p>
+            <h1 class="script-font text-4xl md:text-5xl text-orange-900 mt-3">Pandit Ji Booking Card</h1>
+            <p class="text-orange-900/75 mt-2">Choose your Pandit Ji, date, and preferred 2-hour slot.</p>
         </header>
 
-        <section class="bg-[var(--cream)] border-2 border-amber-200 rounded-3xl shadow-2xl p-6 md:p-8">
+        <section class="bg-[var(--white)] border-2 border-orange-200 rounded-3xl shadow-2xl p-6 md:p-8">
             <form id="bookingForm" class="space-y-6">
                 <div class="grid md:grid-cols-2 gap-4">
                     <div>
-                        <label for="panditName" class="block text-sm font-semibold text-amber-900 mb-2">Select Pandit
+                        <label for="panditName" class="block text-sm font-semibold text-orange-900 mb-2">Select Pandit
                             Ji</label>
                         <select id="panditName" name="panditName" required
-                            class="w-full rounded-xl border border-amber-300 bg-white px-4 py-3 focus:outline-none focus:ring-2 focus:ring-amber-400">
+                            class="w-full rounded-xl border border-orange-300 bg-white px-4 py-3 focus:outline-none focus:ring-2 focus:ring-orange-400">
                             <option value="">Choose Pandit Ji</option>
                             <option value="Pandit Ji A">Pandit Ji A</option>
                             <option value="Pandit Ji B">Pandit Ji B</option>
@@ -68,51 +68,52 @@
                     </div>
 
                     <div>
-                        <label for="bookingDate" class="block text-sm font-semibold text-amber-900 mb-2">Choose
+                        <label for="bookingDate" class="block text-sm font-semibold text-orange-900 mb-2">Choose
                             Date</label>
                         <input type="date" id="bookingDate" name="bookingDate" required
-                            class="w-full rounded-xl border border-amber-300 bg-white px-4 py-3 focus:outline-none focus:ring-2 focus:ring-amber-400" />
+                            class="w-full rounded-xl border border-orange-300 bg-white px-4 py-3 focus:outline-none focus:ring-2 focus:ring-orange-400" />
                     </div>
                 </div>
 
                 <div>
-                    <p class="block text-sm font-semibold text-amber-900 mb-3">Available Time Slots (2 Hours)</p>
+                    <p class="block text-sm font-semibold text-orange-900 mb-3">Available Time Slots (2 Hours)</p>
                     <div id="slotGrid" class="grid grid-cols-2 md:grid-cols-4 gap-3"></div>
                     <input type="hidden" id="timeSlot" name="timeSlot" required />
-                    <p id="slotHint" class="text-sm text-amber-800 mt-3">Select Pandit Ji and date to view live
+                    <p id="slotHint" class="text-sm text-orange-800 mt-3">Select Pandit Ji and date to view live
                         availability.</p>
                 </div>
 
                 <div class="grid md:grid-cols-3 gap-4">
                     <div>
-                        <label for="userName" class="block text-sm font-semibold text-amber-900 mb-2">Your Name</label>
+                        <label for="userName" class="block text-sm font-semibold text-orange-900 mb-2">Your Name</label>
                         <input type="text" id="userName" name="userName" placeholder="Enter full name" required
-                            class="w-full rounded-xl border border-amber-300 bg-white px-4 py-3 focus:outline-none focus:ring-2 focus:ring-amber-400" />
+                            class="w-full rounded-xl border border-orange-300 bg-white px-4 py-3 focus:outline-none focus:ring-2 focus:ring-orange-400" />
                     </div>
 
                     <div>
-                        <label for="email" class="block text-sm font-semibold text-amber-900 mb-2">Email Address</label>
+                        <label for="email" class="block text-sm font-semibold text-orange-900 mb-2">Email
+                            Address</label>
                         <input type="email" id="email" name="email" placeholder="Enter email for confirmation" required
-                            class="w-full rounded-xl border border-amber-300 bg-white px-4 py-3 focus:outline-none focus:ring-2 focus:ring-amber-400" />
+                            class="w-full rounded-xl border border-orange-300 bg-white px-4 py-3 focus:outline-none focus:ring-2 focus:ring-orange-400" />
                     </div>
 
                     <div>
-                        <label for="mobile" class="block text-sm font-semibold text-amber-900 mb-2">Mobile
+                        <label for="mobile" class="block text-sm font-semibold text-orange-900 mb-2">Mobile
                             Number</label>
                         <input type="tel" id="mobile" name="mobile" placeholder="10-digit mobile number"
                             pattern="[0-9]{10}" required
-                            class="w-full rounded-xl border border-amber-300 bg-white px-4 py-3 focus:outline-none focus:ring-2 focus:ring-amber-400" />
+                            class="w-full rounded-xl border border-orange-300 bg-white px-4 py-3 focus:outline-none focus:ring-2 focus:ring-orange-400" />
                     </div>
                 </div>
 
                 <button id="submitBtn" type="submit"
                     class="w-full md:w-auto px-7 py-3 rounded-full text-white font-semibold shadow-lg transition hover:scale-[1.01]"
-                    style="background: linear-gradient(90deg, var(--saffron), var(--gold));">
+                    style="background: linear-gradient(90deg, var(--saffron), var(--saffron-dark));">
                     Confirm Booking
                 </button>
             </form>
 
-            <div id="resultCard" class="hidden mt-8 p-5 bg-white border border-amber-200 rounded-2xl"></div>
+            <div id="resultCard" class="hidden mt-8 p-5 bg-white border border-orange-200 rounded-2xl"></div>
         </section>
     </main>
 
