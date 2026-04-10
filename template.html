@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            color: #2f241c;
+            margin: 24px;
+        }
+
+        .card {
+            border: 2px solid #d4af37;
+            border-radius: 12px;
+            padding: 24px;
+            background: #fffdf0;
+        }
+
+        .title {
+            margin: 0;
+            color: #a65e00;
+            font-size: 24px;
+        }
+
+        .subtitle {
+            margin: 4px 0 16px;
+            color: #6b4f1d;
+            font-size: 14px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 12px;
+        }
+
+        td {
+            padding: 10px 8px;
+            border-bottom: 1px solid #e8d79d;
+            font-size: 14px;
+        }
+
+        td:first-child {
+            width: 38%;
+            font-weight: bold;
+            color: #4b3a1b;
+        }
+
+        .footer {
+            margin-top: 20px;
+            font-size: 13px;
+            color: #6a5a3b;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="card">
+        <h1 class="title">
+            <?= booking.templeName ?>
+        </h1>
+        <p class="subtitle">Booking Confirmation Receipt</p>
+
+        <table>
+            <tr>
+                <td>Booking ID</td>
+                <td>
+                    <?= booking.bookingId ?>
+                </td>
+            </tr>
+            <tr>
+                <td>Timestamp</td>
+                <td>
+                    <?= booking.timestamp ?>
+                </td>
+            </tr>
+            <tr>
+                <td>Pandit Name</td>
+                <td>
+                    <?= booking.panditName ?>
+                </td>
+            </tr>
+            <tr>
+                <td>Date</td>
+                <td>
+                    <?= booking.date ?>
+                </td>
+            </tr>
+            <tr>
+                <td>Time Slot</td>
+                <td>
+                    <?= booking.timeSlot ?>
+                </td>
+            </tr>
+            <tr>
+                <td>User Name</td>
+                <td>
+                    <?= booking.userName ?>
+                </td>
+            </tr>
+            <tr>
+                <td>Mobile Number</td>
+                <td>
+                    <?= booking.mobile ?>
+                </td>
+            </tr>
+        </table>
+
+        <p class="footer">Thank you for booking your pooja seva with us. Please carry this confirmation at the time of
+            visit.</p>
+    </div>
+</body>
+
+</html>
