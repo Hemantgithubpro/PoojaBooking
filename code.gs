@@ -1,6 +1,10 @@
 const SHEET_NAME = 'Bookings';
 const ADMIN_EMAIL = 'hemantjha2005@gmail.com';
 const ADMIN_ACCESS_KEY = '12345';
+const PANDIT_EMAIL_MAP = {
+  'Pandit Ji A': 'pandit.a@example.com',
+  'Pandit Ji B': 'pandit.b@example.com'
+};
 const TEMPLE_NAME = 'Divine Temple Seva Kendra';
 const TIMEZONE = Session.getScriptTimeZone() || 'Asia/Kolkata';
 const SLOT_LIST = ['9:00 AM - 11:00 AM', '11:00 AM - 1:00 PM', '1:00 PM - 3:00 PM', '3:00 PM - 5:00 PM'];
@@ -99,6 +103,7 @@ function doPost(e) {
         bookingId: bookingId,
         timestamp: timestamp,
         panditName: payload.panditName,
+        panditEmail: getPanditEmail(payload.panditName),
         date: payload.date,
         timeSlot: payload.timeSlot,
         userName: payload.userName,
@@ -125,6 +130,10 @@ function doPost(e) {
   } catch (error) {
     return jsonResponse({ success: false, message: error.message });
   }
+}
+
+function getPanditEmail(panditName) {
+  return String(PANDIT_EMAIL_MAP[panditName] || '').trim();
 }
 
 function parsePostData(rawBody) {
@@ -425,6 +434,29 @@ function sendBookingEmails(bookingData, pdfBlob) {
   GmailApp.sendEmail(ADMIN_EMAIL, adminSubject, adminBody, {
     attachments: [pdfBlob]
   });
+
+  if (bookingData.panditEmail) {
+    const panditSubject = 'New Assigned Booking: ' + bookingData.bookingId;
+    const panditBody = [
+      'Namaste ' + bookingData.panditName + ',',
+      '',
+      'A new booking has been assigned to you.',
+      '',
+      'Temple: ' + bookingData.templeName,
+      'Booking ID: ' + bookingData.bookingId,
+      'Date: ' + bookingData.date,
+      'Time Slot: ' + bookingData.timeSlot,
+      'Devotee Name: ' + bookingData.userName,
+      'Mobile: ' + bookingData.mobile,
+      'Email: ' + (bookingData.email || 'Not provided'),
+      '',
+      'Please find booking confirmation attached.'
+    ].join('\n');
+
+    GmailApp.sendEmail(bookingData.panditEmail, panditSubject, panditBody, {
+      attachments: [pdfBlob]
+    });
+  }
 
   if (bookingData.email) {
     const userSubject = 'Booking Confirmed: ' + bookingData.bookingId;

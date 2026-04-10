@@ -33,6 +33,15 @@ Note: The script auto-adds this header row if the Bookings tab is newly created.
 - ADMIN_EMAIL = admin@example.com
 2. Replace with your real admin inbox.
 
+### 1.3.2 Configure Pandit Ji emails
+1. In code.gs, update:
+- PANDIT_EMAIL_MAP for both Pandit Ji names.
+2. Replace placeholder emails with real inboxes for each Pandit Ji.
+3. Booking confirmation will be emailed to:
+- Selected Pandit Ji
+- User email
+- Admin email
+
 ### 1.3.1 Configure admin access key (for admin page operations)
 1. In code.gs, update:
 - ADMIN_ACCESS_KEY = CHANGE_ME_ADMIN_KEY
@@ -118,6 +127,7 @@ Use:
 - Success message appears
 - PDF download link works
 - Admin email arrives with PDF
+- Selected Pandit Ji email arrives with PDF
 - User email arrives with PDF
 6. Refresh and confirm booked slot is now disabled for same Pandit/date.
 7. Check same slot is still available for the other Pandit Ji.
