@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pandit Ji Booking | Temple Seva</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Kalam:wght@400;700&family=Mukta:wght@300;400;500;700&display=swap"
+        rel="stylesheet" />
+    <style>
+        :root {
+            --saffron: #ff9933;
+            --gold: #d4af37;
+            --cream: #fffdd0;
+            --ink: #332211;
+        }
+
+        body {
+            font-family: "Mukta", sans-serif;
+            color: var(--ink);
+            background:
+                radial-gradient(circle at 20% 20%, rgba(255, 153, 51, 0.18), transparent 45%),
+                radial-gradient(circle at 80% 10%, rgba(212, 175, 55, 0.15), transparent 40%),
+                linear-gradient(135deg, #fffdf2 0%, #fff6dc 45%, #ffefc7 100%);
+            min-height: 100vh;
+        }
+
+        .headline {
+            font-family: "Kalam", cursive;
+        }
+    </style>
+</head>
+
+<body>
+    <main class="min-h-screen flex items-center justify-center px-4 py-10">
+        <section
+            class="max-w-6xl w-full grid md:grid-cols-2 gap-8 items-center bg-white/70 backdrop-blur-sm border border-amber-200 rounded-3xl shadow-2xl overflow-hidden">
+            <div class="p-8 md:p-12">
+                <p class="uppercase tracking-[0.2em] text-amber-800 font-semibold text-sm">Temple Seva Booking</p>
+                <h1 class="headline text-4xl md:text-6xl leading-tight text-amber-900 mt-4">
+                    Welcome to Divine Pooja Scheduling
+                </h1>
+                <p class="mt-5 text-lg text-amber-950/80">
+                    Reserve your preferred Pandit Ji and time slot for sacred ceremonies with a smooth,
+                    transparent, and respectful booking experience.
+                </p>
+                <a href="booking.html"
+                    class="inline-flex items-center gap-2 mt-8 px-7 py-3 rounded-full font-semibold text-white shadow-lg hover:scale-[1.02] transition"
+                    style="background: linear-gradient(90deg, var(--saffron), var(--gold));">
+                    Start Booking
+                    <span aria-hidden="true">&#8594;</span>
+                </a>
+            </div>
+
+            <div class="relative h-[340px] md:h-full min-h-[420px]">
+                <img src="https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&fit=crop&w=1200&q=80"
+                    alt="Serene Hindu temple" class="absolute inset-0 w-full h-full object-cover" />
+                <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-black/10 to-transparent"></div>
+                <div class="absolute bottom-6 left-6 right-6 bg-white/80 rounded-2xl p-4 border border-amber-200">
+                    <p class="headline text-2xl text-amber-900">Shubh Muhurat, Shubh Arambh</p>
+                    <p class="text-amber-900/80">Book with devotion and receive instant confirmation.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
+
+</html>
