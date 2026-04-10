@@ -136,6 +136,20 @@ function getPanditEmail(panditName) {
   return String(PANDIT_EMAIL_MAP[panditName] || '').trim();
 }
 
+function normalizeDateValue(value) {
+  if (Object.prototype.toString.call(value) === '[object Date]' && !isNaN(value.getTime())) {
+    return Utilities.formatDate(value, TIMEZONE, 'yyyy-MM-dd');
+  }
+
+  const text = String(value || '').trim();
+  const match = text.match(/^(\d{4}-\d{2}-\d{2})/);
+  if (match) {
+    return match[1];
+  }
+
+  return text;
+}
+
 function parsePostData(rawBody) {
   if (!rawBody) {
     throw new Error('Missing request body.');
@@ -171,7 +185,7 @@ function getAdminFilteredBookings(filters) {
       bookingId: row[0],
       timestamp: row[1],
       panditName: row[2],
-      date: String(row[3]),
+      date: normalizeDateValue(row[3]),
       timeSlot: row[4],
       userName: row[5],
       mobile: String(row[6])
@@ -223,7 +237,7 @@ function isSlotTakenByOtherBooking(sheet, bookingId, panditName, date, timeSlot)
     const row = values[i];
     const rowBookingId = String(row[0]).trim();
     const rowPandit = row[2];
-    const rowDate = String(row[3]);
+    const rowDate = normalizeDateValue(row[3]);
     const rowSlot = row[4];
 
     if (rowBookingId !== targetId && rowPandit === panditName && rowDate === date && rowSlot === timeSlot) {
@@ -388,7 +402,7 @@ function getBookedSlotsForPanditAndDate(panditName, date) {
   for (var i = 1; i < values.length; i++) {
     const row = values[i];
     const rowPandit = row[2];
-    const rowDate = String(row[3]);
+    const rowDate = normalizeDateValue(row[3]);
     const rowSlot = row[4];
 
     if (rowPandit === panditName && rowDate === date) {

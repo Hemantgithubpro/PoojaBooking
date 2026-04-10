@@ -25,10 +25,15 @@ function setMinDate() {
   dateField.min = `${yyyy}-${mm}-${dd}`;
 }
 
-function buildSlotGrid() {
+function clearSlotGrid() {
+  slotGrid.innerHTML = "";
+  timeSlotField.value = "";
+}
+
+function renderAvailableSlots(availableSlots) {
   slotGrid.innerHTML = "";
 
-  SLOTS.forEach((slot) => {
+  availableSlots.forEach((slot) => {
     const button = document.createElement("button");
     button.type = "button";
     button.className =
@@ -37,10 +42,6 @@ function buildSlotGrid() {
     button.dataset.slot = slot;
 
     button.addEventListener("click", () => {
-      if (button.disabled) {
-        return;
-      }
-
       document.querySelectorAll(".slot-btn").forEach((btn) => btn.classList.remove("active"));
       button.classList.add("active");
       timeSlotField.value = slot;
@@ -50,29 +51,13 @@ function buildSlotGrid() {
   });
 }
 
-function paintSlots() {
-  const selected = timeSlotField.value;
-
-  document.querySelectorAll(".slot-btn").forEach((btn) => {
-    const slot = btn.dataset.slot;
-    const isBooked = bookedSlotSet.has(slot);
-
-    btn.disabled = isBooked;
-    btn.classList.toggle("active", slot === selected && !isBooked);
-
-    if (isBooked && slot === selected) {
-      timeSlotField.value = "";
-    }
-  });
-}
-
 async function fetchBookedSlots() {
   const panditName = panditField.value;
   const date = toISODate(dateField.value);
 
   if (!panditName || !date) {
     bookedSlotSet = new Set();
-    paintSlots();
+    clearSlotGrid();
     slotHint.textContent = "Select Pandit Ji and date to view live availability.";
     return;
   }
@@ -88,18 +73,23 @@ async function fetchBookedSlots() {
     }
 
     const data = await response.json();
+    if (!data.success) {
+      throw new Error(data.message || "Could not fetch slot details.");
+    }
+
     const booked = Array.isArray(data.bookedSlots) ? data.bookedSlots : [];
     bookedSlotSet = new Set(booked);
-    paintSlots();
 
-    const availableCount = SLOTS.filter((slot) => !bookedSlotSet.has(slot)).length;
+    const availableSlots = SLOTS.filter((slot) => !bookedSlotSet.has(slot));
+    renderAvailableSlots(availableSlots);
+
     slotHint.textContent =
-      availableCount > 0
-        ? `${availableCount} slot(s) available for ${panditName} on ${date}.`
+      availableSlots.length > 0
+        ? `${availableSlots.length} slot(s) available for ${panditName} on ${date}.`
         : `No slots available for ${panditName} on ${date}. Please choose another date or Pandit Ji.`;
   } catch (error) {
     bookedSlotSet = new Set();
-    paintSlots();
+    clearSlotGrid();
     slotHint.textContent = "Unable to load availability right now. Please try again.";
   }
 }
@@ -130,7 +120,7 @@ function renderError(message) {
 async function handleSubmit(event) {
   event.preventDefault();
 
-  if (!timeSlotField.value) {
+  if (!timeSlotField.value || bookedSlotSet.has(timeSlotField.value)) {
     renderError("Please select an available time slot before submitting.");
     return;
   }
@@ -171,10 +161,9 @@ async function handleSubmit(event) {
     renderSuccess(result);
     resultCard.classList.remove("hidden");
     bookingForm.reset();
-    timeSlotField.value = "";
     bookedSlotSet = new Set();
-    paintSlots();
-    slotHint.textContent = "Booking complete. Choose details again for a new booking.";
+    clearSlotGrid();
+    slotHint.textContent = "Booking complete. Select Pandit Ji and date for the next booking.";
   } catch (error) {
     renderError(error.message || "Something went wrong while booking.");
     resultCard.classList.remove("hidden");
@@ -191,7 +180,7 @@ function init() {
   }
 
   setMinDate();
-  buildSlotGrid();
+  clearSlotGrid();
   panditField.addEventListener("change", fetchBookedSlots);
   dateField.addEventListener("change", fetchBookedSlots);
   bookingForm.addEventListener("submit", handleSubmit);
