@@ -9,18 +9,19 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-        href="https://fonts.googleapis.com/css2?family=Kalam:wght@400;700&family=Mukta:wght@300;400;500;700&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;500;600;700&display=swap"
         rel="stylesheet" />
     <style>
         :root {
             --saffron: #ff7a00;
             --saffron-dark: #d65f00;
+            --saffron-soft: #fff3e6;
             --white: #ffffff;
             --ink: #332211;
         }
 
         body {
-            font-family: "Mukta", sans-serif;
+            font-family: "Poppins", sans-serif;
             color: var(--ink);
             background:
                 radial-gradient(circle at 15% 18%, rgba(255, 122, 0, 0.2), transparent 45%),
@@ -29,49 +30,148 @@
             min-height: 100vh;
         }
 
-        .headline {
-            font-family: "Kalam", cursive;
+        .display-font {
+            font-family: "Playfair Display", serif;
+        }
+
+        .hero-overlay {
+            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.52), rgba(0, 0, 0, 0.68));
+        }
+
+        .card-hover {
+            transition: transform 0.24s ease, box-shadow 0.24s ease, border-color 0.24s ease;
+        }
+
+        .card-hover:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 14px 28px -16px rgba(124, 45, 18, 0.55);
+            border-color: rgba(255, 122, 0, 0.5);
         }
     </style>
 </head>
 
-<body>
-    <main class="min-h-screen flex items-center justify-center px-4 py-10">
-        <section
-            class="max-w-6xl w-full grid md:grid-cols-2 gap-8 items-center bg-white/85 backdrop-blur-sm border border-orange-200 rounded-3xl shadow-2xl overflow-hidden">
-            <div class="p-8 md:p-12">
-                <p class="uppercase tracking-[0.2em] text-orange-700 font-semibold text-sm">Temple Seva Booking</p>
-                <h1 class="headline text-4xl md:text-6xl leading-tight text-orange-900 mt-4">
-                    Welcome to Divine Pooja Scheduling
-                </h1>
-                <p class="mt-5 text-lg text-orange-950/80">
-                    Reserve your preferred Pandit Ji and time slot for sacred ceremonies with a smooth,
-                    transparent, and respectful booking experience.
-                </p>
-                <a href="booking.html"
-                    class="inline-flex items-center gap-2 mt-8 px-7 py-3 rounded-full font-semibold text-white shadow-lg hover:scale-[1.02] transition"
-                    style="background: linear-gradient(90deg, var(--saffron), var(--saffron-dark));">
-                    Start Booking
-                    <span aria-hidden="true">&#8594;</span>
+<body class="antialiased">
+    <div class="flex min-h-screen flex-col">
+        <header
+            class="sticky top-0 z-50 border-b border-orange-200 bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/80">
+            <div class="mx-auto flex h-16 max-w-6xl items-center justify-between gap-4 px-4">
+                <a href="index.html"
+                    class="flex items-center gap-3 rounded-full px-2 py-1.5 transition hover:bg-orange-50">
+                    <span class="grid h-10 w-10 place-items-center rounded-full bg-orange-100 text-xl">🙏</span>
+                    <span>
+                        <span class="block text-base font-bold leading-tight text-orange-900 md:text-lg">Temple Seva
+                            Booking</span>
+                        <span class="hidden text-xs text-orange-700/80 md:block">Namaste. Book with ease and
+                            devotion.</span>
+                    </span>
                 </a>
-                <a href="admin.html"
-                    class="inline-flex items-center gap-2 mt-4 px-6 py-2.5 rounded-full border border-orange-300 text-orange-900 font-semibold bg-white hover:bg-orange-50 transition">
-                    Open Admin Panel
-                </a>
+                <nav class="flex items-center gap-2 md:gap-3">
+                    <a href="index.html"
+                        class="rounded-full px-3 py-1.5 text-sm font-semibold text-orange-900 transition-colors hover:bg-orange-100">Home</a>
+                    <a href="booking.html"
+                        class="rounded-full bg-orange-600 px-5 py-2 text-sm font-medium text-white shadow-sm transition-colors hover:bg-orange-700">Book
+                        Now</a>
+                    <a href="admin.html"
+                        class="rounded-full border border-orange-300 px-5 py-2 text-sm font-medium text-orange-900 transition-colors hover:bg-orange-50">Admin</a>
+                </nav>
             </div>
+        </header>
 
-            <div class="relative h-[340px] md:h-full min-h-[420px]">
+        <main class="flex-1">
+            <section class="relative min-h-[540px] overflow-hidden">
                 <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/df/Ayodhya_Ram_Mandir_Inauguration_Day_Picture.jpg/1280px-Ayodhya_Ram_Mandir_Inauguration_Day_Picture.jpg"
-                    alt="Ram Mandir, Ayodhya" class="absolute inset-0 w-full h-full object-cover" />
-                <div class="absolute inset-0 bg-gradient-to-t from-orange-950/30 via-orange-900/10 to-transparent">
+                    alt="Ram Mandir, Ayodhya" class="absolute inset-0 h-full w-full object-cover" />
+                <div class="hero-overlay absolute inset-0"></div>
+
+                <div class="relative z-10 mx-auto flex h-full max-w-6xl flex-col justify-center px-4 py-24 text-center">
+                    <p
+                        class="mx-auto w-fit rounded-full bg-white/20 px-4 py-1 text-xs font-semibold tracking-[0.18em] text-white">
+                        TRUSTED TEMPLE SEVA PLATFORM
+                    </p>
+                    <h1
+                        class="display-font mt-5 text-4xl font-bold leading-tight text-white drop-shadow-lg md:text-6xl">
+                        Professional Booking for Pooja and Ritual Services
+                    </h1>
+                    <p class="mx-auto mt-5 max-w-2xl text-base text-white/90 md:text-lg">
+                        Schedule your preferred Pandit Ji and time slot in minutes with live availability,
+                        instant confirmation, and transparent booking management.
+                    </p>
+                    <div class="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
+                        <a href="booking.html"
+                            class="rounded-xl bg-orange-600 px-8 py-3 text-base font-semibold text-white shadow-lg transition hover:bg-orange-700">
+                            Book a Pooja Now
+                        </a>
+                    </div>
                 </div>
-                <div class="absolute bottom-6 left-6 right-6 bg-white/85 rounded-2xl p-4 border border-orange-200">
-                    <p class="headline text-2xl text-orange-900">Shubh Muhurat, Shubh Arambh</p>
-                    <p class="text-orange-900/80">Book with devotion and receive instant confirmation.</p>
+            </section>
+
+            <section class="mx-auto max-w-6xl px-4 py-16">
+                <h2 class="display-font text-center text-3xl font-bold text-orange-900">Popular Pooja Services</h2>
+                <p class="mx-auto mt-3 max-w-2xl text-center text-orange-900/75">
+                    Choose from key rituals and ceremonies with experienced Pandit Ji services.
+                </p>
+
+                <div class="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+                    <a href="booking.html"
+                        class="card-hover rounded-xl border border-orange-200 bg-white p-5 shadow-sm">
+                        <p class="text-3xl">🙏</p>
+                        <h3 class="mt-3 font-semibold text-orange-900">Satyanarayan Pooja</h3>
+                        <p class="mt-1 text-sm text-orange-900/70">For peace, prosperity and family well-being.</p>
+                    </a>
+                    <a href="booking.html"
+                        class="card-hover rounded-xl border border-orange-200 bg-white p-5 shadow-sm">
+                        <p class="text-3xl">🏠</p>
+                        <h3 class="mt-3 font-semibold text-orange-900">Griha Pravesh</h3>
+                        <p class="mt-1 text-sm text-orange-900/70">Auspicious housewarming rituals for new homes.</p>
+                    </a>
+                    <a href="booking.html"
+                        class="card-hover rounded-xl border border-orange-200 bg-white p-5 shadow-sm">
+                        <p class="text-3xl">🔱</p>
+                        <h3 class="mt-3 font-semibold text-orange-900">Rudrabhishek</h3>
+                        <p class="mt-1 text-sm text-orange-900/70">Lord Shiva worship for blessings and protection.</p>
+                    </a>
+                    <a href="booking.html"
+                        class="card-hover rounded-xl border border-orange-200 bg-white p-5 shadow-sm">
+                        <p class="text-3xl">🔥</p>
+                        <h3 class="mt-3 font-semibold text-orange-900">Havan / Yagna</h3>
+                        <p class="mt-1 text-sm text-orange-900/70">Sacred fire rituals for purity and positivity.</p>
+                    </a>
                 </div>
-            </div>
-        </section>
-    </main>
+            </section>
+
+            <section class="bg-[var(--saffron-soft)] py-16">
+                <div class="mx-auto max-w-5xl px-4 text-center">
+                    <h2 class="display-font text-3xl font-bold text-orange-900">Why Families Choose Us</h2>
+                    <div class="mt-10 grid gap-6 md:grid-cols-3">
+                        <div class="rounded-xl border border-orange-200 bg-white p-6 shadow-sm">
+                            <p class="text-4xl">🎓</p>
+                            <h3 class="mt-3 font-semibold text-orange-900">Experienced Pandit Ji</h3>
+                            <p class="mt-2 text-sm text-orange-900/75">Knowledgeable in Vedic rituals and traditions.
+                            </p>
+                        </div>
+                        <div class="rounded-xl border border-orange-200 bg-white p-6 shadow-sm">
+                            <p class="text-4xl">📅</p>
+                            <h3 class="mt-3 font-semibold text-orange-900">Simple Booking Flow</h3>
+                            <p class="mt-2 text-sm text-orange-900/75">Quick slot selection with real-time availability.
+                            </p>
+                        </div>
+                        <div class="rounded-xl border border-orange-200 bg-white p-6 shadow-sm">
+                            <p class="text-4xl">✅</p>
+                            <h3 class="mt-3 font-semibold text-orange-900">Reliable Confirmation</h3>
+                            <p class="mt-2 text-sm text-orange-900/75">Instant success message, PDF receipt, and emails.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer class="border-t border-orange-200 bg-white py-8 text-center">
+            <p class="text-lg font-semibold text-orange-900">Temple Seva Booking</p>
+            <p class="mt-2 text-sm text-orange-900/75">Trusted platform for pooja and ceremony scheduling.</p>
+            <p class="mt-4 text-xs text-orange-900/60">2026 Temple Seva Booking. All rights reserved.</p>
+        </footer>
+    </div>
 </body>
 
 </html>
